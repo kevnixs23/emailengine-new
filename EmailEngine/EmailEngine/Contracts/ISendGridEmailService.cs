@@ -11,7 +11,7 @@ namespace EmailEngine.Contracts
 {
     public interface ISendGridEmailService
     {
-       Task<string> SendMail(string subject, string body, string from, string fromName,
-            string recipient, string cc, string bcc, List<SendGrid.Helpers.Mail.Attachment> attachments, bool isBodyHtml = false);
+        string SendMail(string subject, string body, string from, string fromName,
+               string recipient, string cc, string bcc, bool isBodyHtml = false);
     }
 }

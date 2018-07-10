@@ -12,11 +12,11 @@ namespace Sample
     {
         static void Main(string[] args)
         {
-            //var SMTPServer = ConfigurationManager.AppSettings["SMTPServer"] ?? string.Empty;
-            //var SMTPPortNo = ConfigurationManager.AppSettings["SMTPPortNo"] ?? string.Empty;
-            //var SMTPUsername = ConfigurationManager.AppSettings["SMTPUsername"] ?? string.Empty;
-            //var SMTPPassword = ConfigurationManager.AppSettings["SMTPPassword"] ?? string.Empty;
-            //var SMTPUseSSL = ConfigurationManager.AppSettings["SMTPUseSSL"];
+            var SMTPServer = ConfigurationManager.AppSettings["SMTPServer"] ?? string.Empty;
+            var SMTPPortNo = ConfigurationManager.AppSettings["SMTPPortNo"] ?? string.Empty;
+            var SMTPUsername = ConfigurationManager.AppSettings["SMTPUsername"] ?? string.Empty;
+            var SMTPPassword = ConfigurationManager.AppSettings["SMTPPassword"] ?? string.Empty;
+            var SMTPUseSSL = ConfigurationManager.AppSettings["SMTPUseSSL"];
             var SendGridApiKey = ConfigurationManager.AppSettings["SendGridApiKey"];
 
             var fromEmail = "developerPH129@gmail.com";
@@ -28,7 +28,7 @@ namespace Sample
             var bcc = "";
             var option = "";
             //var sendEmailService = new EmailService(SMTPServer, SMTPPortNo, SMTPUsername, SMTPPassword, SMTPUseSSL);
-            var sendEmailService = new EmailService();
+            //var sendEmailService = new EmailService();
             var sendGridEmailService = new SendGridEmailService(SendGridApiKey);
             while (true)
             {
@@ -42,17 +42,17 @@ namespace Sample
                 bcc = Console.ReadLine();
                 Console.WriteLine("Please input body");
                 body = Console.ReadLine();
+                var message = "";
 
-
-                var message = sendEmailService.SendMail(subject,
-                                           body,
-                                           to,
-                                           fromEmail,
-                                           from,
-                                           cc,
-                                           bcc,
-                                           null,
-                                           false);
+                //var message = sendEmailService.SendMail(subject,
+                //                           body,
+                //                           to,
+                //                           fromEmail,
+                //                           from,
+                //                           cc,
+                //                           bcc,
+                //                           null,
+                //                           false);
 
                 //var message = await sendGridEmailService.SendMail(subject,
                 //               body,
@@ -64,7 +64,7 @@ namespace Sample
                 //               null,
                 //               false);
 
-                if(string.IsNullOrEmpty(message))
+                if (string.IsNullOrEmpty(message))
                     Console.WriteLine("Successfully sent");
                 else
                 {
